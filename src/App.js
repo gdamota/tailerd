@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import {useContext, useReducer} from "react";
+import {reducer, initialState} from "./reducer/reducer.js";
+// import {ACTIONS} from "./reducer/actions.js";
+import Measurements from "./components/measurements";
 
-function App() {
+export const UserContext = React.createContext(initialState);
+
+const App = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserContext.Provider value={{state: state, dispatch: dispatch}}>
+      <div className="App">
+        <Measurements />
+      </div>
+    </UserContext.Provider>
   );
-}
+};
 
 export default App;
