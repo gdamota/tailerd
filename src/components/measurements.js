@@ -1,15 +1,14 @@
 import {useContext, useState} from "react";
-import {reducer, initialState} from "../reducer/reducer.js";
 import {ACTIONS} from "../reducer/actions.js";
-import {UserContext} from "../App.js";
+import {UserContext} from "../reducer/context.js";
 import {Form, Button} from "react-bootstrap";
 import "./styles/measurements.scss";
 
 const Measurements = () => {
-  const {state, dispatch} = useContext(UserContext);
+  const {dispatch} = useContext(UserContext);
   const [brand, setBrand] = useState();
   const [size, setSize] = useState();
-  const [addidas, setAddidas] = useState();
+  const [Addidas, setAddidas] = useState();
   function subForm(e) {
     e.preventDefault();
     dispatch({
@@ -43,7 +42,7 @@ const Measurements = () => {
         <Form.Group className="mb-3" controlId="brand">
           <label for="brand">Select Brand:</label>
           <Form.Control as="select" onChange={e => setBrand(e.target.value)}>
-            <option value=""></option>
+            <option value="" />
             <option value="Nike">Nike</option>
             <option value="Addidas">Addidas</option>
             <option value="Asics">Asics</option>
@@ -58,7 +57,7 @@ const Measurements = () => {
               as="select"
               onChange={e => setAddidas(e.target.value)}
             >
-              <option value=""></option>
+              <option value="" />
               <option value="Yeezy">Yezzy</option>
               <option value="NMDs">NMDs</option>
               <option value="Nizza">Nizzas</option>

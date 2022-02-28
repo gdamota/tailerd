@@ -1,20 +1,17 @@
 import React from "react";
 import "./App.css";
-import {useContext, useReducer} from "react";
-import {reducer, initialState} from "./reducer/reducer.js";
-// import {ACTIONS} from "./reducer/actions.js";
+import {ContextProvider} from "./reducer/context.js";
 import Measurements from "./components/measurements";
-
-export const UserContext = React.createContext(initialState);
+import Navbar from "./pages/navbar";
 
 const App = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
   return (
-    <UserContext.Provider value={{state: state, dispatch: dispatch}}>
+    <ContextProvider>
       <div className="App">
+        <Navbar />
         <Measurements />
       </div>
-    </UserContext.Provider>
+    </ContextProvider>
   );
 };
 
